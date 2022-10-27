@@ -35,22 +35,41 @@ h1 {
 }
 
 .game {
-  --spacing: 4px;
+  --spacing: 0.5rem;
+  --cell-size: 7rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
+  position: relative;
 
   background: var(--color-white);
   gap: var(--spacing);
-  border: var(--spacing) var(--color-white) solid;
+  padding: var(--spacing);
 }
 
 .cell {
-  width: 7rem;
+  width: var(--cell-size);
   aspect-ratio: 1/1;
+  background: var(--color-darkgrey);
+}
+
+.number {
+  --color:hsl(calc(343 + var(--number)), 95%, 68%);
+
+  width: var(--cell-size);
+  aspect-ratio: 1/1;
+
+  position: absolute;
+  top: calc((var(--cell-size) + var(--spacing)) * var(--row));
+  left: calc((var(--cell-size) + var(--spacing)) * var(--column));
+  
+  transition: all ease-in-out 400ms;
+
+  margin: var(--spacing);
+  background: var(--color);
+
   display: grid;
   place-items: center;
-  background: var(--color-darkgrey);
-  color: var(--color-primary);
+
   font-size: 2.5rem;
 }
